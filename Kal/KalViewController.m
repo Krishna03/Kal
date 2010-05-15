@@ -34,7 +34,7 @@ void mach_absolute_difference(uint64_t end, uint64_t start, struct timespec *tp)
 
 @implementation KalViewController
 
-@synthesize dataSource, delegate;
+@synthesize dataSource, delegate, selectedDate;
 
 - (id)initWithSelectedDate:(NSDate *)selectedDate
 {
@@ -88,6 +88,7 @@ void mach_absolute_difference(uint64_t end, uint64_t start, struct timespec *tp)
 
 - (void)didSelectDate:(KalDate *)date
 {
+  self.selectedDate = [date NSDate];
   NSDate *from = [[date NSDate] cc_dateByMovingToBeginningOfDay];
   NSDate *to = [[date NSDate] cc_dateByMovingToEndOfDay];
   [self clearTable];

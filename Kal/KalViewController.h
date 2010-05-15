@@ -26,8 +26,11 @@
   id <UITableViewDelegate> delegate;
   id <KalDataSource> dataSource;
   NSDate *initialSelectedDate;
+  NSDate *selectedDate;
 }
 
+
+@property (nonatomic, retain) NSDate *selectedDate;
 @property (nonatomic, assign) id<UITableViewDelegate> delegate;
 @property (nonatomic, assign) id<KalDataSource> dataSource;
 
