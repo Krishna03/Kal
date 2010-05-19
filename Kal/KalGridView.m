@@ -204,8 +204,12 @@ static NSString *kSlideAnimationId = @"KalSwitchMonths";
                  || (direction == SLIDE_DOWN && [logic.daysInFirstWeekOfFollowingMonth count] > 0);
   
   [self swapMonthsAndSlide:direction keepOneRow:keepOneRow];
-  
-  self.selectedTile = [frontMonthView firstTileOfMonth];
+
+  if ([[[NSDate date] cc_dateByMovingToFirstDayOfTheMonth] isEqual:[[frontMonthView firstTileOfMonth].date NSDate]]) {
+    self.selectedTile = [frontMonthView tileForDate:[KalDate dateFromNSDate:[[NSDate date] cc_dateByMovingToBeginningOfDay]]];
+  } else {
+    self.selectedTile = [frontMonthView firstTileOfMonth];
+  }
 }
 
 - (void)slideUp { [self slide:SLIDE_UP]; }
